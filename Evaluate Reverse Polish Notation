@@ -1,0 +1,17 @@
+class Solution(object):
+    def evalRPN(self, tokens):
+        stack = []
+        for i in tokens:
+            if i in "+-*/":
+                j, k = stack.pop(), stack.pop()
+                if i == "+":
+                    stack.append(k+j)
+                elif i == "-":
+                    stack.append(k - j)
+                elif i == "*":
+                    stack.append(k * j)
+                else:
+                    stack.append(int(float(k)/j))
+            else:
+                stack.append(int(i))
+        return stack.pop()
