@@ -1,0 +1,10 @@
+class Solution(object):
+    def isValid(self, s):
+        brack = [('{', '}'), ('(', ')'), ('[', ']')]
+        stack = []
+        for c in s:
+            if len(stack)>0 and (stack[-1], c) in brack:
+                stack.pop()
+            else:
+                stack.append(c)
+        return len(stack)==0
