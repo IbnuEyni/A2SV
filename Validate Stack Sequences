@@ -1,0 +1,19 @@
+class Solution(object):
+    def validateStackSequences(self, pushed, popped):
+        stack = []
+        stack_elements = set()
+        next_to_push = 0
+        for num in popped:
+            if num in stack_elements:
+                if stack[-1] != num:
+                    return False
+                else:
+                    stack_elements.remove(stack[-1])
+                    stack.pop()
+            else:
+                while pushed[next_to_push] != num:
+                    stack.append(pushed[next_to_push])
+                    stack_elements.add(pushed[next_to_push])
+                    next_to_push += 1
+                next_to_push += 1
+        return True
