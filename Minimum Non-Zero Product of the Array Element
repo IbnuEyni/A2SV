@@ -1,0 +1,3 @@
+class Solution(object):
+    def minNonZeroProduct(self, p):
+        M = 10 ** 9 + 7
