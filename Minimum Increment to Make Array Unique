@@ -1,0 +1,17 @@
+class Solution(object):
+    def minIncrementForUnique(self, nums):
+        before = sum(nums)
+        d = collections.Counter()
+        nums.sort()
+        m = float('-inf')
+        
+        for i, num in enumerate(nums):
+            if num not in d:
+                d[num] += 1
+                m = max(m, num)
+                continue
+            else:
+                m += 1
+                nums[i] = m
+                d[m] += 1
+        return sum(nums) - before
