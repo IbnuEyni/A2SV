@@ -1,0 +1,28 @@
+class Solution(object):
+    def spiralOrder(self, matrix):
+        if matrix is None or len(matrix)==0:
+            return []
+        def generate(matrix,startRow,startCol,ret):
+            if startCol >= len(matrix[0]) - startCol or startRow >= len(matrix) - startRow:
+                return
+            elif startCol == len(matrix[0]) - startCol - 1:
+                for i in range(startRow,len(matrix)-startRow):
+                    ret.append(matrix[i][startCol])
+                return
+            elif startRow == len(matrix) - startRow - 1:
+                for i in range(startCol,len(matrix[0])-startCol):
+                    ret.append(matrix[startRow][i])
+                return
+            else:
+                for i in range(startCol,len(matrix[0])-startCol):
+                    ret.append(matrix[startRow][i])
+                for i in range(startRow+1,len(matrix)-startRow):
+                    ret.append(matrix[i][len(matrix[0])-startCol-1])
+                for i in reversed(range(startCol,len(matrix[0])-startCol-1)):
+                    ret.append(matrix[len(matrix)-startRow-1][i])
+                for i in reversed(range(startRow+1,len(matrix)-startRow-1)):
+                    ret.append(matrix[i][startCol])
+                generate(matrix,startRow+1,startCol+1,ret)
+        ret = []
+        generate(matrix,0,0,ret)
+        return ret
