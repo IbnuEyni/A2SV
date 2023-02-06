@@ -1,0 +1,65 @@
+class MyCircularDeque:
+
+    def __init__(self, ):
+        self.capacity = k + 1
+        self.deque = [0] * self.capacity
+        self.front = 0
+        self.rear = 0
+        
+
+    def insertFront(self, value):
+        
+
+        if  self.isFull():
+            return False
+            
+        self.front = (self.front - 1)% self.capacity
+        self.deque[ self.front ] = value
+        return True
+
+   
+        
+        
+    def insertLast(self, value) :
+        
+        
+        if self.isFull():
+            return False
+            
+        self.deque[ self.rear ] = value
+        self.rear = (self.rear + 1)%self.capacity    
+        return True
+        
+    def deleteFront(self):
+        if self.isEmpty():
+            return False
+            
+        self.front = (self.front+1)%self.capacity
+        return True
+        
+            
+        
+    def deleteLast(self):
+        if self.isEmpty():
+            return False
+        self.rear = (self.rear-1)%self.capacity
+        return True
+        
+    def getFront(self):
+        
+        return  -1 if self.isEmpty() else self.deque[self.front] 
+        
+
+    def getRear(self):
+        
+        return  -1 if self.isEmpty() else self.deque[self.rear - 1] 
+        
+
+    def isEmpty(self):
+        
+        return self.rear == self.front
+        
+
+    def isFull(self):
+        
+        return abs(self.rear - self.front +1 ) % self.capacity == 0
