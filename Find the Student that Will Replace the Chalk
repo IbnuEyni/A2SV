@@ -1,0 +1,9 @@
+class Solution(object):
+    def chalkReplacer(self, chalk, k):
+        once = sum(chalk)
+        remain = k%once
+        cur = 0
+        while remain>=chalk[cur]:
+            remain -= chalk[cur]
+            cur+=1
+        return cur
