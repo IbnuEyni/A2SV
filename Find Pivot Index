@@ -1,0 +1,17 @@
+class Solution(object):
+    def pivotIndex(self, nums):
+        arr_len = len(nums)
+        
+        sum_left = 0
+        sum_right = sum(nums)
+        for pivot in range(0, arr_len):
+
+            if pivot - 1 >= 0:
+                sum_left += nums[pivot - 1]
+
+            sum_right -= nums[pivot]
+
+            if sum_left == sum_right:
+                return pivot
+
+        return -1
