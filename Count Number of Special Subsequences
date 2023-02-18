@@ -1,0 +1,12 @@
+class Solution(object):
+    def countSpecialSubsequences(self, nums):
+        mod = 10**9 + 7
+        dp = [0] * 4
+        for c in nums:
+            if c == 0:
+                dp[1] = (dp[1] * 2 + 1) % mod
+            elif c == 1:
+                dp[2] = (dp[2] * 2 + dp[1]) % mod
+            elif c == 2:
+                dp[3] = (dp[3] * 2 + dp[2]) % mod
+        return dp[3]
