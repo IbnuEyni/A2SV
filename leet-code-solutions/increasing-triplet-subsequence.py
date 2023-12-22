@@ -4,17 +4,15 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        first = float('inf')
-        second = float('inf')
-
-        for i in range(len(nums)):
-            if nums[i] <= first:
-                first = nums[i]
-            elif nums[i] <= second:
-                second = nums[i]
+        first_min = float('inf')
+        second_min = float('inf')
+        
+        for num in nums:
+            if num <= first_min:
+                first_min = num
+            elif num <= second_min:
+                second_min = num
             else:
                 return True
-        return False
-
-
         
+        return False
