@@ -80,7 +80,7 @@ class MyLinkedList(object):
                 curr = curr.next
             node = Node(val)
             node.next = curr.next
-            curr.next = node
+            curr.next = node    
 
             self.size += 1
 
